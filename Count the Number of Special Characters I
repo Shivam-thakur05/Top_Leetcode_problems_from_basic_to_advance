@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int numberOfSpecialChars(string word) {
+        bool lowercase[26] = {false};
+        bool uppercase[26] = {false};
+        int count = 0;
+
+    for (char c : word) {
+            int index = tolower(c) - 'a';
+            if (islower(c) && !lowercase[index]) {
+                lowercase[index] = true;
+            } else if (isupper(c) && !uppercase[index]) {
+                uppercase[index] = true;
+            }
+        }
+
+        
+    for (int i = 0; i < 26; ++i) {
+        if (lowercase[i] && uppercase[i]) {
+            count++;
+        }
+    }
+
+    return count;
+    }
+};
